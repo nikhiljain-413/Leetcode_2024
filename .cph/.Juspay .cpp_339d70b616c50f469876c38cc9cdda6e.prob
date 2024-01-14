@@ -1,0 +1,1 @@
+{"name":"Local: Juspay ","url":"c:\\Users\\NIKHIL JAIN\\Desktop\\Leetcode_2024\\Juspay .cpp","tests":[{"id":1705124618888,"input":"4\n2\n5\n7\n9\n4\n2 9\n7 2\n7 9\n9 5\n7 \n9","output":"2 7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\NIKHIL JAIN\\Desktop\\Leetcode_2024\\Juspay .cpp","group":"local","local":true}
