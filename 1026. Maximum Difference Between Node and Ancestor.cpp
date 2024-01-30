@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+#define ll long long
 class Solution {
 public:
     pair<int,int> solve(TreeNode* root, int &mx){
