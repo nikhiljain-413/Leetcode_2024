@@ -1,3 +1,4 @@
+#define ll long long
 class Solution {
 public:
     int climbStairs(int n) {
