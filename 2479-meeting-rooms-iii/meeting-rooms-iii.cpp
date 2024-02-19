@@ -3,7 +3,7 @@ class Solution {
 public:
     int mostBooked(int n, vector<vector<int>>& meetings) {
         sort(meetings.begin(), meetings.end());
-        cout<<meetings.size()<<endl;
+        // cout<<meetings.size()<<endl;
         set<ll> vacant;
         vector<ll> used(n,0);
         map<ll, vector<ll>> free;
@@ -12,10 +12,12 @@ public:
             vacant.insert(i);
         }
         ll start=0;
-        ll end;
+        ll time;
+        ll mx = 0;
+        ll room_no = 0;
         for(auto met : meetings){
             start = max(start, met[0]*1ll);
-            ll time = met[1]-met[0];
+            time = met[1]-met[0];
             // while(free.size() && free.begin()->first<=start){
             //     for(auto f: free.begin()->second){
             //         vacant.insert(f);
@@ -34,11 +36,10 @@ public:
                     break;
                 }
             }
-            if(vacant.size()>0){
-            }else{
+            if(!vacant.size()>0){
                 auto it = free.begin();
                 start = max(start, it->first);
-                cout<<start<<" ";
+                // cout<<start<<" ";
                 for(auto f: it->second){
                     vacant.insert(f);
                 }
@@ -48,17 +49,22 @@ public:
             ll room = *it;
             vacant.erase(it);
             free[start+time].push_back(room);
-            cout<<room<<" "<<start<<" "<<start+time<<endl;
+            // cout<<room<<" "<<start<<" "<<start+time<<endl;
             used[room]++;
-        }
-        ll mx = 0;
-        ll room_no = 0;
-        for(ll i=0;i<n;i++){
-            if(used[i]>mx){
-                mx = max(mx, used[i]);
-                room_no = i;
+            if(used[room]>mx){
+                mx = used[room];
+                room_no = room;
+            }else if(used[room] == mx){
+                room_no = min(room_no, room);
             }
         }
+        
+        // for(ll i=0;i<n;i++){
+        //     if(used[i]>mx){
+        //         mx = max(mx, used[i]);
+        //         room_no = i;
+        //     }
+        // }
         return room_no;
     }
 };
