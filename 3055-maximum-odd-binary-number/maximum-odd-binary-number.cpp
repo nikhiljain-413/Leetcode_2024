@@ -2,18 +2,19 @@ class Solution {
 public:
     string maximumOddBinaryNumber(string s) {
         int n = s.size();
-        int cnt = 0;
-        for(int i=n-1;i>=0;i--){
-            if(s[i]=='1'){
-                s[i]='0';
-                cnt++;
+        int left = 0;
+        int right = n-1;
+        while(left <= right){
+            if(s[left]=='0' && s[right]=='1'){
+                swap(s[left], s[right]);
+                left++;
+                right--;
+                continue;
             }
+            if(s[left]=='1') left++;
+            if(s[right]=='0') right--;
         }
-        for(int i=0;i<cnt-1;i++){
-            s[i] = '1';
-        }
-        if(cnt)
-        s[n-1] = '1';
+        swap(s[left-1], s[n-1]);
         return s;
     }
 };
