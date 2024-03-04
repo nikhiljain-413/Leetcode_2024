@@ -51,20 +51,20 @@ public:
             free[start+time].push_back(room);
             // cout<<room<<" "<<start<<" "<<start+time<<endl;
             used[room]++;
-            if(used[room]>mx){
-                mx = used[room];
-                room_no = room;
-            }else if(used[room] == mx){
-                room_no = min(room_no, room);
-            }
+            // if(used[room]>mx){
+            //     mx = used[room];
+            //     room_no = room;
+            // }else if(used[room] == mx){
+            //     room_no = min(room_no, room);
+            // }
         }
         
-        // for(ll i=0;i<n;i++){
-        //     if(used[i]>mx){
-        //         mx = max(mx, used[i]);
-        //         room_no = i;
-        //     }
-        // }
+        for(ll i=0;i<n;i++){
+            if(used[i]>mx){
+                mx = max(mx, used[i]);
+                room_no = i;
+            }
+        }
         return room_no;
     }
 };
