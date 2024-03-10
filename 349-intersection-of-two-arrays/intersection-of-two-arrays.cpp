@@ -6,10 +6,10 @@ public:
 
         nums1.erase(unique(nums1.begin(), nums1.end()), nums1.end());
         nums2.erase(unique(nums2.begin(), nums2.end()), nums2.end());
-        for(auto it: nums1) cout<<it<<" ";
-        cout<<endl;
-        for(auto it: nums2) cout<<it<<" ";
-        cout<<endl;
+        // for(auto it: nums1) cout<<it<<" ";
+        // cout<<endl;
+        // for(auto it: nums2) cout<<it<<" ";
+        // cout<<endl;
         int i = 0,j=0;
         int n1 = nums1.size();
         int n2 = nums2.size();
