@@ -21,13 +21,15 @@ public:
             }
         }
         vector<int> v(n,0);
-        if(cnt_zero==2) return v;
-        if(cnt_zero==1){
+        if(cnt_zero==2) {}
+        else if(cnt_zero==1){
             v[indx1] = prod1 * prod2;
             return v;
         }
-        for(int i=0;i<n;i++){
-            v[i] = prod1/nums[i];
+        else{
+            for(int i=0;i<n;i++){
+                v[i] = prod1/nums[i];
+            }
         }
         return v;
     }
