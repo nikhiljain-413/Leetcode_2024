@@ -21,54 +21,22 @@ public:
         if(head==NULL || head->next==NULL|| head->next->next==NULL) return;
         ListNode* first = head;
         ListNode* second = head;
-        ListNode* ret_head = head;
-        ListNode* prev_head = NULL;
+        
         while(second!=NULL && second->next!=NULL && second->next->next!=NULL){
-            prev_head = first;
             first = first->next;
             second = second->next->next;
         }
-        // if(prev_head) prev_head->next = NULL;
-        ListNode* new_head = reverse(first);
-        ListNode* new_head_temp = new_head;
-        ListNode* head_temp = head;
 
-        int cnt = 0,tot=0;
-        while(new_head_temp!=NULL){
-            cout<<new_head_temp->val<<" ";
-            new_head_temp = new_head_temp->next;
-            cnt++;
-        }
-        cout<<endl;
-        while(head_temp!=NULL){
-            cout<<head_temp->val<<" ";
-            head_temp = head_temp->next;
-            cnt++;
-        }
-        cnt--;
-        cout<<cnt<<endl;
+        ListNode* new_head = reverse(first);
+        
         while(new_head != NULL && head!=NULL){
             ListNode* head_next = head->next;
             ListNode* new_head_next = new_head->next;
             head->next = new_head;
-            tot++;
-            // if(tot >= cnt){
-            //     head = ret_head;
-            //     return;
-            // } 
             new_head->next = head_next;
-            tot++;
             head = head_next;
             new_head = new_head_next;
         }
-        // return ret_head;
-        head_temp = ret_head;
-        cout<<endl;
-        while(head_temp!=NULL){
-            cout<<head_temp->val<<" ";
-            head_temp = head_temp->next;
-        }
-        head = ret_head;
     }
 };
 
