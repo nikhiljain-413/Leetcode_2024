@@ -14,7 +14,6 @@ public:
                 j++;
             }
             ans += (i-j)+1;
-            cout<<(i-j)+1<<" ";
         }
         return ans;
     }
