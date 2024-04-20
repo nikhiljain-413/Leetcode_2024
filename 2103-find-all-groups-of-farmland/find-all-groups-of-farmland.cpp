@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<vector<int>> dirs = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+    vector<vector<int>> dirs = {{1,0},{0,1}};
     int n,m;
     void dfs(vector<vector<int>>& land, int i, int j, vector<vector<int>>& vis, int& k, int& l){
         vis[i][j] = 1;
