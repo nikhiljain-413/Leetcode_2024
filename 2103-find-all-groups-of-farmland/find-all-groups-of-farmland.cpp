@@ -7,7 +7,7 @@ public:
         for(auto dir : dirs){
             int new_x = i+dir[0];
             int new_y = j+dir[1];
-            if(new_x>=0 && new_y>=0 && new_x<n && new_y<m && land[new_x][new_y] && !vis[new_x][new_y]){
+            if( new_x<n && new_y<m && land[new_x][new_y] && !vis[new_x][new_y]){
                 k = max(k, new_x);
                 l = max(l, new_y);
                 dfs(land, new_x, new_y, vis, k,l);
