@@ -12,14 +12,14 @@ public:
             return a.first*b.second>b.first*a.second;
         });
         //wage
-        for(auto it:v)cout<<it.first<<" ";
-        cout<<endl;
+        // for(auto it:v)cout<<it.first<<" ";
+        // cout<<endl;
         //quality
-        for(auto it:v)cout<<it.second<<" ";
-        cout<<endl;
+        // for(auto it:v)cout<<it.second<<" ";
+        // cout<<endl;
         //wage/quality
-        for(auto it:v)cout<<it.first*1.0/it.second<<" ";
-        cout<<endl;
+        // for(auto it:v)cout<<it.first*1.0/it.second<<" ";
+        // cout<<endl;
         vector<int> pref(n,0);
         int sum = 0;
         priority_queue<int> pq;
@@ -34,8 +34,8 @@ public:
             } 
         }
         //quality pref
-        for(auto it: pref) cout<<it<<" ";
-        cout<<endl;
+        // for(auto it: pref) cout<<it<<" ";
+        // cout<<endl;
 
         double ans = INT_MAX;
         for(int i=k-1;i<n;i++){
@@ -44,9 +44,9 @@ public:
             // if(left>=0) tot-=pref[left];
             double temp = v[left+1].first*1.0/v[left+1].second * tot;
             ans = min(ans, temp);
-            cout<<i<<" "<<tot<<" "<<v[left+1].first*1.0/v[left+1].second<<" "<<temp<<" "<<ans<<endl;
+            // cout<<i<<" "<<tot<<" "<<v[left+1].first*1.0/v[left+1].second<<" "<<temp<<" "<<ans<<endl;
         }
-        cout<<endl;
+        // cout<<endl;
         return ans;
     }
 };
