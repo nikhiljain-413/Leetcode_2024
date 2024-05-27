@@ -1,46 +1,39 @@
 class Solution {
 public:
-    // int vv[22];
-
-    bool rec(string s,int i, vector<string>& d,vector<string> v,set<vector<string>> &all_s){
-        int n = s.size();
-        if(i==n){
-            all_s.insert(v);
-            return true;
-        } 
-        // if(find(d.begin(),d.end(),s.substr(i,n-i)) != d.end()) return true;
-        // if(vv[i]!=-1) return vv[i];
-        bool ans = false;
-        for(int k = i;k<n;k++){
-            string str = s.substr(i,k-i+1);
-            if(find(d.begin(),d.end(),str) != d.end()){
-                v.push_back(str);
-                rec(s,k+1,d,v,all_s);
-                v.pop_back();
+    vector<vector<string>> all_vector;
+    vector<string> temp, ans;
+    set<string> dict;
+    bool ispossible(string s){
+        return dict.find(s)!=dict.end();
+    }
+    void solve(int i, string &s){
+        if(i==s.size()){
+            all_vector.push_back(temp);
+            return;
+        }
+        for(int k=i;k<s.size();k++){
+            string str = s.substr(i, k-i+1);
+            if(ispossible(str)){
+                temp.push_back(str);
+                solve(k+1, s);
+                temp.pop_back();
             }
         }
-        // return vv[i] = ans;
+    }
+    vector<string> wordBreak(string &s, vector<string>& wordDict) {
+        for(auto word: wordDict){
+            dict.insert(word);
+        }
+        solve(0, s);
+        for(auto t: all_vector){
+            string tt = "";
+            for(auto strr: t){
+                tt.insert(tt.end(), strr.begin(), strr.end());
+                tt.push_back(' ');
+            }
+            tt.pop_back();
+            ans.push_back(tt);
+        }
         return ans;
-    }
-    string con(vector<string> v){
-        string ret = "";
-        for(auto s:v){
-            ret.append(s);
-            ret.push_back(' ');
-        }
-        ret.pop_back();
-        return ret;
-    }
-    vector<string> wordBreak(string s, vector<string>& d) {
-        // memset(vv,-1,sizeof(vv));
-        set<vector<string>> all_s;
-        // if(find(d.begin(),d.end(),s) != d.end()) return true;
-        vector<string> v;
-        rec(s,0,d,v,all_s);
-        vector<string> ret;
-        for(auto vv: all_s){
-            ret.push_back(con(vv));
-        }
-        return ret;
     }
 };
