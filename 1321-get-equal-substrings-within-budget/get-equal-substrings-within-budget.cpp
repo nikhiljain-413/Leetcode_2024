@@ -3,28 +3,18 @@ public:
     int equalSubstring(string s, string t, int maxCost) {
         int n = s.size();
         int m = t.size();
+        int cost = 0;
         if(n!=m) return 0;
-        vector<int> pref(n);
-        pref[0] = abs(t[0] - s[0]);
-        for(int i=1;i<n;i++){
-            pref[i] = pref[i-1] + abs(t[i]-s[i]);
-        }
+        int j = 0;
         int ans = 0;
         for(int i=0;i<n;i++){
-            int diff = pref[i];
-            if(diff<=maxCost){
-                ans = max(ans, i+1);
-                continue;
-            } 
-            int to_find = diff - maxCost;
-            int indx = lower_bound(pref.begin(), pref.end(), to_find) - pref.begin();
-            ans = max(ans, i-indx);
-
+            cost += abs(s[i]-t[i]);
+            while(j<=i && cost>maxCost){
+                cost -= abs(s[j]-t[j]);
+                j++;
+            }
+            ans = max(ans, i-j+1);
         }
         return ans;
     }
 };
-// 2
-// 1 1 1 2 1
-// 1 2 3 5 6
-
