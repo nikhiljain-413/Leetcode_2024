@@ -5,10 +5,10 @@ public:
         dp[0] = 0;
         for(int i=1;i<n;i++){
             int lastIndx = dp[i-1];
-            while(lastIndx>0 && (aa[i] != aa[lastIndx])){
-                lastIndx = dp[lastIndx - 1];
+            while(lastIndx>0 && (aa[i]!=aa[lastIndx])){
+                lastIndx = dp[lastIndx-1];
             }
-            dp[i] = lastIndx + ((aa[i] == aa[lastIndx])?1:0);
+            dp[i] = lastIndx + ((aa[i]==aa[lastIndx])?1:0);
         }
     }
     vector<int> beautifulIndices(string s, string a, string b, int k) {
