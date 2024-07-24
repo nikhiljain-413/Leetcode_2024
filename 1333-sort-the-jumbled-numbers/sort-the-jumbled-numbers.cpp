@@ -8,7 +8,7 @@ public:
         for(int i=0;i<n;i++){
             ans = ans*10 + (mapping[s[i]-'0']);
         }
-        cout<<ans<<" ";
+        // cout<<ans<<" ";
         return ans;
     }
     vector<int> sortJumbled(vector<int>& mapping, vector<int>& nums) {
