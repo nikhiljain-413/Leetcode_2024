@@ -1,34 +1,19 @@
 class Solution {
 public:
     int minSwaps(vector<int>& nums) {
-        // Initialize minimum swaps to a large value
-        int minimumSwaps = INT_MAX;
-
-        // Calculate the total number of 1s in the array
-        int totalOnes = accumulate(nums.begin(), nums.end(), 0);
-
-        // Initialize the count of 1s in the current window
-        int onesCount = nums[0];
-        int end = 0;
-
-        // Slide the window across the array
-        for (int start = 0; start < nums.size(); ++start) {
-            // Adjust onesCount by removing the element that is sliding out of
-            // the window
-            if (start != 0) {
-                onesCount -= nums[start - 1];
+        int ones_window = accumulate(nums.begin(), nums.end(), 0);
+        int n = nums.size();
+        int max_ones_in_window = 0;
+        int ones_in_window = 0;
+        int start = 0;
+        for(int i=0;i<2*n;i++){
+            if(nums[i%n]) ones_in_window++;
+            if(i-start+1>ones_window){
+                if(nums[start%n]) ones_in_window--;
+                start++;
             }
-
-            // Expand the window to the right until it reaches the desired size
-            while (end - start + 1 < totalOnes) {
-                end++;
-                onesCount += nums[end % nums.size()];
-            }
-
-            // Update the minimum number of swaps needed
-            minimumSwaps = min(minimumSwaps, totalOnes - onesCount);
+            max_ones_in_window = max(max_ones_in_window, ones_in_window);
         }
-
-        return minimumSwaps;
+        return ones_window - max_ones_in_window;
     }
 };
