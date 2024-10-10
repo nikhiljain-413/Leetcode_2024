@@ -1,30 +1,17 @@
 class Solution {
 public:
-
     int maxWidthRamp(vector<int>& nums) {
+        vector<pair<int,int>> vec;
         int n = nums.size();
-        stack<int> st;
         for(int i=0;i<n;i++){
-            if(st.size()==0) st.push(i);
-            else{
-                if(nums[i]<nums[st.top()]){
-                    st.push(i);
-                }
-            }
+            vec.push_back({nums[i], i});
         }
-        // while(st.size()){
-        //     cout<<st.top()<<" ";
-        //     st.pop();
-        // } 
-        // cout<<endl;
+        sort(vec.begin(), vec.end());
+        int min_indx = vec[0].second;
         int ans = 0;
-        int j = n-1; 
-        while(j>=0){
-            while(st.size() && nums[j]>=nums[st.top()]){
-                ans = max(ans, j-st.top());
-                st.pop();
-            }  
-            j--;
+        for(int i=0;i<n;i++){
+            ans = max(ans, vec[i].second-min_indx);
+            min_indx = min(min_indx, vec[i].second);
         }
         return ans;
     }
