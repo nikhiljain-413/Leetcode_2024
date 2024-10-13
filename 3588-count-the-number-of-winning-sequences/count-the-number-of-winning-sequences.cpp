@@ -2,15 +2,15 @@
 
 class Solution {
 public:
-    map<char,int> mp;
-    int MOD = 1e9+7;
-    int n;
-    ll solve(string &s, int indx, int last, int cnt, vector<vector<vector<int>>> &dp){
+    map<char,ll> mp;
+    ll MOD = 1e9+7;
+    ll n;
+    ll solve(string &s, ll indx, ll last, ll cnt, vector<vector<vector<ll>>> &dp){
         if(indx == s.size()){
             return cnt>n?1:0;
         }
         if(dp[indx][cnt][last]!=-1) return dp[indx][cnt][last];
-        int curr = mp[s[indx]];
+        ll curr = mp[s[indx]];
         ll ans = 0;
         if(curr == 0){
             if(last!=0) ans += solve(s, indx+1, 0, cnt, dp)%MOD;
@@ -32,7 +32,7 @@ public:
         // w f w 1 0 1
         // e w e 2 1 2
         n = s.size();
-        vector<vector<vector<int>>> dp(n,vector<vector<int>>(2*n,vector<int> (4,-1)));
+        vector<vector<vector<ll>>> dp(n,vector<vector<ll>>(2*n,vector<ll> (4,-1)));
         // memset(dp, -1, sizeof(dp));
         mp['F'] = 0;
         mp['W'] = 1;
